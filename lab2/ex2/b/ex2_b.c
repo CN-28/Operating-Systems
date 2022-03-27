@@ -61,7 +61,7 @@ int main(int argc, char *argv[]) {
 
     t = clock() - t;
     double time_taken = ((double) t) / CLOCKS_PER_SEC;
-    int timeFd = open("pomiar_zad_2", O_WRONLY | O_APPEND | O_CREAT, 0666);
+    int timeFd = open("../pomiar_zad_2", O_WRONLY | O_APPEND | O_CREAT, 0666);
     
     char res[100];
     snprintf(res, 100, "System libraries functions version took %f seconds\n", time_taken);

@@ -1,20 +1,23 @@
-// fread(), fwrite() version
+// read(), write() version
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 #include <ctype.h>
 #include <time.h>
 #include <string.h>
 
-void handleFileCopying(FILE *fp, FILE *ofp) {
-    fseek(fp, 0L, SEEK_END);
-    int size = ftell(fp);
-    fseek(fp, 0L, SEEK_SET);
+
+void handleFileCopying(int fd1, int fd2) {
+    long size = lseek(fd1, 0L, SEEK_END);
+    lseek(fd1, 0L, SEEK_SET);
     
     char *buffor = malloc(20 * sizeof(char));
     char *temp = malloc(20 * sizeof(char));
     int charsRead = 0, bufforSize = 20, isEmpty = 1, last_ws_i, k, tempFilled = 0, temp_i = 0, sumRead = 0;
     while (1) {
-        charsRead = fread(buffor, sizeof(char), bufforSize, fp);
+        charsRead = read(fd1, buffor, bufforSize);
         sumRead += charsRead;
 
         k = 0;
@@ -25,7 +28,7 @@ void handleFileCopying(FILE *fp, FILE *ofp) {
                     if (!isEmpty) {
                         
                         if (tempFilled)
-                            fwrite(temp, sizeof(char), temp_i, ofp);
+                            write(fd2, temp, temp_i);
                         
                         for (int j = last_ws_i + 1; j <= i; j++) {
                             buffor[k] = buffor[j];
@@ -59,9 +62,9 @@ void handleFileCopying(FILE *fp, FILE *ofp) {
 
         if (k > 0){
             if (sumRead == size && (buffor[k - 1] == '\n' || buffor[k - 1] == '\v' || buffor[k - 1] == '\f'))
-                fwrite(buffor, sizeof(char), k - 1, ofp);
+                write(fd2, buffor, k - 1);
             else
-                fwrite(buffor, sizeof(char), k, ofp);
+                write(fd2, buffor, k);
         }
 
         if (charsRead != bufforSize)
@@ -71,16 +74,20 @@ void handleFileCopying(FILE *fp, FILE *ofp) {
         buffor = realloc(buffor, bufforSize);
         temp = realloc(temp, sumRead + bufforSize);
     }
+
     free(buffor);
     free(temp);
 }
 
 
-void openFile(FILE **fp, char* input, char* fileMode) {
-    if ((*fp = fopen(input, fileMode)) == NULL){
+int openFile(char *input, int flags) {
+    int fd = open(input, flags);
+    if (fd < 0) {
         printf("Cannot open %s file!\n", input);
         exit(1);
     }
+    
+    return fd;
 }
 
 
@@ -104,23 +111,20 @@ int main(int argc, char *argv[]) {
     char *input1, *input2;
     getFileNames(argc, argv, &input1, &input2);
 
-    FILE *fp, *ofp;
-    openFile(&fp, input1, "r");
-    openFile(&ofp, input2, "r+");
-    handleFileCopying(fp, ofp);
+    int fd1 = openFile(input1, O_RDONLY);
+    int fd2 = openFile(input2, O_WRONLY);
+    handleFileCopying(fd1, fd2);
 
-    fclose(fp);
-    fclose(ofp);
+    close(fd1);
+    close(fd2);
 
-      
     t = clock() - t;
     double time_taken = ((double) t) / CLOCKS_PER_SEC;
-    FILE *timeFp;
-    timeFp = fopen("pomiar_zad_1", "a");
+    int timeFd = open("../pomiar_zad_1", O_WRONLY | O_APPEND | O_CREAT, 0666);
     
     char res[256];
-    snprintf(res, 256, "C libraries functions version took %f seconds\n", time_taken);
-    fwrite(res, sizeof(char), strlen(res), timeFp);
-    fclose(timeFp);
+    snprintf(res, 256, "System libraries functions version took %f seconds\n", time_taken);
+    write(timeFd, res, strlen(res));
+    close(timeFd);
     return 0;
 }

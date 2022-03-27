@@ -51,7 +51,7 @@ int main(int argc, char *argv[]) {
     t = clock() - t;
     double time_taken = ((double) t) / CLOCKS_PER_SEC;
     FILE *timeFp;
-    timeFp = fopen("pomiar_zad_2", "a");
+    timeFp = fopen("../pomiar_zad_2", "a");
     
     char res[100];
     snprintf(res, 100, "C libraries functions version took %f seconds\n", time_taken);
