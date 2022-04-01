@@ -5,7 +5,7 @@
 #include <sys/types.h>
 #include <string.h>
 #include <unistd.h>
-#include<sys/wait.h>
+#include <sys/wait.h>
 
 
 void searchFileForString(char dirPath[], char string[], char fileName[], char dirName[]) {
@@ -77,9 +77,8 @@ void search(DIR * dp, char dirPath[], char string[], int currDepth, int maxDepth
         strcat(str, entry->d_name);
         n = strlen(str);
         if (entry->d_type == DT_DIR){
-            if (fork() == 0){
-                if (currDepth + 1 <= maxDepth)
-                    search(opendir(str), str, string, currDepth + 1, maxDepth, dirName);
+            if (currDepth + 1 <= maxDepth && fork() == 0){
+                search(opendir(str), str, string, currDepth + 1, maxDepth, dirName);
                 exit(0);
             }
         }
