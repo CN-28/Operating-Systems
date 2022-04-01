@@ -10,20 +10,12 @@
 
 void searchFileForString(char dirPath[], char string[], char fileName[], char dirName[]) {
     FILE *fp = fopen(dirPath, "r");
-    char *buffor = malloc(20 * sizeof(char));
-    char *res = malloc(20 * sizeof(char));
-    int charsRead = 0, bufforSize = 20, sumRead = 0;
-    while (1) {
-        charsRead = fread(buffor, sizeof(char), bufforSize, fp);
-        sumRead += charsRead;
-        strncat(res, buffor, charsRead);
-        if (charsRead != bufforSize)
-            break;
-
-        bufforSize *= 2;
-        buffor = realloc(buffor, bufforSize);
-        res = realloc(res, sumRead + bufforSize);
-    }
+    
+    fseek(fp, 0, SEEK_END);
+    long fileSize = ftell(fp);
+    fseek(fp, 0, SEEK_SET);
+    char *res = malloc(fileSize * sizeof(char));
+    fread(res, sizeof(char), fileSize, fp);
 
     int contains = 0;
     for (int i = 0; i < strlen(res); i++) {
@@ -58,7 +50,6 @@ void searchFileForString(char dirPath[], char string[], char fileName[], char di
         }    
     }
 
-    free(buffor);
     free(res);
     fclose(fp);
 }
@@ -79,7 +70,7 @@ void search(DIR * dp, char dirPath[], char string[], int currDepth, int maxDepth
         if (entry->d_type == DT_DIR){
             if (currDepth + 1 <= maxDepth && fork() == 0){
                 search(opendir(str), str, string, currDepth + 1, maxDepth, dirName);
-                exit(0);
+                break;
             }
         }
         else if (entry->d_type == DT_REG && n > 4 && str[n - 4] == '.' && str[n - 3] == 't' && str[n - 2] == 'x' && str[n - 1] == 't')
