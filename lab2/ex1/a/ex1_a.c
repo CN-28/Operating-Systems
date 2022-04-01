@@ -5,6 +5,7 @@
 #include <time.h>
 #include <string.h>
 
+
 void handleFileCopying(FILE *fp, FILE *ofp) {
     fseek(fp, 0L, SEEK_END);
     int size = ftell(fp);
