@@ -1,0 +1,21 @@
+----------------------------------
+        fork
+
+SIGUSR1 ignored in parent
+SIGUSR1 ignored in child
+handler printing in parent
+handler printing in child
+SIGUSR1 masked in parent
+SIGUSR1 masked in child
+SIGUSR1 pending in the parent
+SIGUSR1 not pending in the child
+----------------------------------
+        exec
+
+SIGUSR1 ignored in parent
+SIGUSR1 ignored in child
+SIGUSR1 masked in parent
+SIGUSR1 masked in child
+SIGUSR1 pending in the parent
+SIGUSR1 pending in the child
+----------------------------------
