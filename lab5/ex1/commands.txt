@@ -1,0 +1,8 @@
+c1 = ps -a
+c2 = sort -r
+c3 = uniq | grep -v sh
+c4 = grep m
+
+c1 | c2 | c3
+c1 | c3
+c1 | c2 | c4
