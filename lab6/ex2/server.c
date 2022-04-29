@@ -29,11 +29,12 @@ int handle_init(char message[]){
     char mess[MAX_MESS_LEN], cl_id[100];
     sprintf(cl_id, "%d", new_client_id);
     strcpy(mess, cl_id);
-    if (mq_send(clients[new_client_id], mess, MAX_MESS_LEN, NULL) == -1){
+    if (mq_send(clients[new_client_id], mess, MAX_MESS_LEN, INIT) == -1){
         printf("Can't send feedback message to client!\n");
         return 1;
     }
     printf("Sent back message with order in queue value!\n");
+    return 0;
 }
 
 void log_to_file(long client_id, char *cmd, char text[]){
@@ -59,11 +60,11 @@ void log_to_file(long client_id, char *cmd, char text[]){
 int handle_stop(char *message){
     int client_id = atoi(message);
     if (mq_close(clients[client_id]) == -1){
-        printf("Can't close %d's message queue!\n");
+        printf("Can't close %d's message queue!\n", client_id);
         return 1;
     }
     log_to_file(client_id, STOP_COM, "");
-    printf("\nClient %ld has stopped working!\n", client_id);
+    printf("\nClient %d has stopped working!\n", client_id);
     clients[client_id] = 0;
     return 0;
 }
@@ -83,7 +84,7 @@ int handle_list(char *message){
 
     
     if (mq_send(clients[client_id], mess, MAX_MESS_LEN, LIST) == -1){
-        printf("Can't send list of active clients to %d\n");
+        printf("Can't send list of active clients to %d\n", client_id);
         return 1;
     }
 
@@ -92,8 +93,8 @@ int handle_list(char *message){
 }
 
 int handle_all(char *message){
-    char *req_client_id, *rest;
-    req_client_id = strtok_r(message, " \n", &rest);
+    char *rest;
+    strtok_r(message, " \n", &rest);
     int client_id = atoi(strtok_r(rest, " \n", &rest));
     time_t curr_time = time(NULL);
     char mess[MAX_MESS_LEN];
@@ -110,7 +111,7 @@ int handle_all(char *message){
             }
         }
     }
-    printf("Sent message to all clients from client %ld!\n", client_id);
+    printf("Sent message to all clients from client %d!\n", client_id);
     return 0;
 }
 
@@ -134,7 +135,7 @@ int handle_one(char *message){
         printf("Can't send the message from %d client to %d client!\n", client_id, req_client_id);
         return 1;
     }
-    printf("\nSent message to client %ld from %ld client!\n", client_id, req_client_id);
+    printf("\nSent message to client %d from %d client!\n", client_id, req_client_id);
     return 0;
 }
 

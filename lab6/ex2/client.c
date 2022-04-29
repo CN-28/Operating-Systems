@@ -32,6 +32,7 @@ int send_init(){
 
     client_id = strtol(rec_mess, NULL, 10);
     printf("\nReceived %ld id number from server!\n", client_id);
+    return 0;
 }
 
 int send_list(){
@@ -50,6 +51,7 @@ int send_list(){
     }
     
     printf("List of active clients: \n%s\n", message);
+    return 0;
 }
 
 int send_all_or_one(long type, long request_client_id, char *message){
@@ -75,20 +77,21 @@ int send_stop(){
 
     printf("\nSTOP sent from %ld client to the server!\n", client_id);
     if (pid > 0)
-        kill(pid, SIGKILL);
+        kill(pid, SIGINT);
     else if (pid == 0)
-        kill(getppid(), SIGKILL);
+        kill(getppid(), SIGINT);
 
     exit(0);
 }
 
 int handle_all_one(char *message){
-    char *rest;
+    char *rest = NULL;
     long sender_id = strtol(strtok_r(message, " \n", &rest), NULL, 10);
     time_t curr_time = (time_t) strtol(strtok_r(rest, " ", &rest), NULL, 10);
     struct tm *info = localtime(&curr_time);
-    printf("Received at: %s", asctime(info));
+    printf("Received message from %ld at: %s", sender_id, asctime(info));
     printf("Message: \n%s", rest);
+    return 0;
 }
 
 void listen_input_and_messages(){
@@ -169,13 +172,13 @@ void listen_input_and_messages(){
             // check messages from clients/server
             if (mq_getattr(client_qd, &attr) == -1){
                 printf("Can't get message queue attributes!\n");
-                return 1;
+                continue;
             }            
             
             if (attr.mq_curmsgs > 0){
                 if (mq_receive(client_qd, message, MAX_MESS_LEN, &prio) == -1){
                     printf("Failed to receive a message from clients!\n");
-                    return 1;
+                    continue;
                 }
 
                 switch (prio){
