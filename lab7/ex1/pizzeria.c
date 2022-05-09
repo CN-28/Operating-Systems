@@ -4,11 +4,12 @@
 #include <sys/ipc.h>
 #include <sys/sem.h>
 #include <sys/types.h>
+#include <sys/wait.h>
+#include <unistd.h>
 #define TABLE_MAX 5
 #define OVEN_MAX 5
 
-int *table;
-int *oven;
+int *table, *oven;
 
 
 int main(int argc, char *argv[]){
@@ -50,15 +51,15 @@ int main(int argc, char *argv[]){
         exit(1);
     }
 
-    // initialize empty oven
-    for (int i = 0; i < OVEN_MAX; i++)
-        oven[i] = -1;
-
     // attach oven array to shared memory
     if ((oven = (int *) shmat(o_shmid, NULL, 0)) == (int *) -1){
         printf("Can't attach shared memory segment for oven array!\n");
         exit(1);
     }
+
+    // initialize empty oven
+    for (int i = 0; i < OVEN_MAX; i++)
+        oven[i] = -1;
 
     // allocate a shared memory segment for table array
     int t_shmid;    
@@ -66,16 +67,16 @@ int main(int argc, char *argv[]){
         printf("Can't allocate a shared memory segment for table array!\n");
         exit(1);
     }
-    
-    // initialize empty table
-    for (int i = 0; i < TABLE_MAX; i++)
-        table[i] = -1;
 
     // attach table array to shared memory
     if ((table = (int *) shmat(t_shmid, NULL, 0)) == (int *) -1){
         printf("Can't attach shared memory segment for table array!\n");
         exit(1);
     }
+
+    // initialize empty table
+    for (int i = 0; i < TABLE_MAX; i++)
+        table[i] = -1;
 
     // create key for semaphores set
     key_t s_key;
@@ -84,7 +85,7 @@ int main(int argc, char *argv[]){
         exit(1);
     }
     
-    // create 2 semaphores
+    // create 3 semaphores
     int semid;
     if ((semid = semget(s_key, 3, IPC_CREAT | 0666)) == -1){
         printf("Can't create semaphore!\n");
@@ -98,31 +99,33 @@ int main(int argc, char *argv[]){
     } arg;
     arg.val = OVEN_MAX - 1;
 
-    // set all semaphores' values to 0
+    // set all semaphores' values
     for (int i = 0; i < 3; i++){
+        if (i == 1) arg.val = 1;
+        else if (i == 2) arg.val = 0;
+
         if (semctl(semid, i, SETVAL, arg) == -1){
             printf("Can't initialize semaphores values!\n");
             exit(1);
         }
-        if (i == 1) arg.val = 1;
-        else if (i == 2) arg.val = 0;
     }
     
-    /* 
     char *cook_args[] = {"./cook", NULL};
     for (int i = 0; i < N; i++){
         if (fork() == 0)
             execvp(cook_args[0], cook_args);
     }
 
+    /*
     char *deliverer_args[] = {"./deliverer", NULL};
     for (int i = 0; i < M; i++){
         if (fork() == 0)
             exec(deliverer_args[0], deliverer_args);
     }
-    
-    while (wait(NULL) != -1);
     */
+    while (wait(NULL) != -1);
+    
+
 
     if (semctl(semid, 0, IPC_RMID, NULL) == -1){
         printf("Can't delete semaphore!\n");
