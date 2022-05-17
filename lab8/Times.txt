@@ -1,0 +1,366 @@
+Image: lena.ascii.pgm
+Pixels: 262144; Number of threads: 1
+Ratio: 262144.000000
+Method: block
+Thread number 1: 1947 microseconds
+Real time used by main thread: 2345 microseconds
+
+Image: lena.ascii.pgm
+Pixels: 262144; Number of threads: 1
+Ratio: 262144.000000
+Method: numbers
+Thread number 1: 8325 microseconds
+Real time used by main thread: 8961 microseconds
+
+Image: lena.ascii.pgm
+Pixels: 262144; Number of threads: 2
+Ratio: 131072.000000
+Method: block
+Thread number 1: 1040 microseconds
+Thread number 2: 500 microseconds
+Real time used by main thread: 1153 microseconds
+
+Image: lena.ascii.pgm
+Pixels: 262144; Number of threads: 2
+Ratio: 131072.000000
+Method: numbers
+Thread number 1: 5155 microseconds
+Thread number 2: 4818 microseconds
+Real time used by main thread: 5968 microseconds
+
+Image: lena.ascii.pgm
+Pixels: 262144; Number of threads: 4
+Ratio: 65536.000000
+Method: block
+Thread number 1: 567 microseconds
+Thread number 2: 605 microseconds
+Thread number 3: 615 microseconds
+Thread number 4: 601 microseconds
+Real time used by main thread: 1038 microseconds
+
+Image: lena.ascii.pgm
+Pixels: 262144; Number of threads: 4
+Ratio: 65536.000000
+Method: numbers
+Thread number 1: 3406 microseconds
+Thread number 2: 4731 microseconds
+Thread number 3: 4750 microseconds
+Thread number 4: 2292 microseconds
+Real time used by main thread: 5380 microseconds
+
+Image: lena.ascii.pgm
+Pixels: 262144; Number of threads: 8
+Ratio: 32768.000000
+Method: block
+Thread number 1: 177 microseconds
+Thread number 2: 395 microseconds
+Thread number 3: 481 microseconds
+Thread number 4: 171 microseconds
+Thread number 5: 545 microseconds
+Thread number 6: 470 microseconds
+Thread number 7: 538 microseconds
+Thread number 8: 261 microseconds
+Real time used by main thread: 823 microseconds
+
+Image: lena.ascii.pgm
+Pixels: 262144; Number of threads: 8
+Ratio: 32768.000000
+Method: numbers
+Thread number 1: 851 microseconds
+Thread number 2: 5029 microseconds
+Thread number 3: 3779 microseconds
+Thread number 4: 3680 microseconds
+Thread number 5: 2593 microseconds
+Thread number 6: 1829 microseconds
+Thread number 7: 3471 microseconds
+Thread number 8: 1194 microseconds
+Real time used by main thread: 5444 microseconds
+
+Image: lena.ascii.pgm
+Pixels: 262144; Number of threads: 16
+Ratio: 16384.000000
+Method: block
+Thread number 1: 202 microseconds
+Thread number 2: 103 microseconds
+Thread number 3: 179 microseconds
+Thread number 4: 203 microseconds
+Thread number 5: 200 microseconds
+Thread number 6: 89 microseconds
+Thread number 7: 235 microseconds
+Thread number 8: 227 microseconds
+Thread number 9: 222 microseconds
+Thread number 10: 115 microseconds
+Thread number 11: 150 microseconds
+Thread number 12: 204 microseconds
+Thread number 13: 214 microseconds
+Thread number 14: 209 microseconds
+Thread number 15: 139 microseconds
+Thread number 16: 167 microseconds
+Real time used by main thread: 917 microseconds
+
+Image: lena.ascii.pgm
+Pixels: 262144; Number of threads: 16
+Ratio: 16384.000000
+Method: numbers
+Thread number 1: 2625 microseconds
+Thread number 2: 2507 microseconds
+Thread number 3: 4160 microseconds
+Thread number 4: 4618 microseconds
+Thread number 5: 4112 microseconds
+Thread number 6: 4885 microseconds
+Thread number 7: 4610 microseconds
+Thread number 8: 5139 microseconds
+Thread number 9: 4616 microseconds
+Thread number 10: 5392 microseconds
+Thread number 11: 3774 microseconds
+Thread number 12: 3690 microseconds
+Thread number 13: 3347 microseconds
+Thread number 14: 1848 microseconds
+Thread number 15: 1148 microseconds
+Thread number 16: 670 microseconds
+Real time used by main thread: 6623 microseconds
+
+Image: apollonian_gasket.ascii.pgm
+Pixels: 360000; Number of threads: 1
+Ratio: 360000.000000
+Method: block
+Thread number 1: 2808 microseconds
+Real time used by main thread: 3240 microseconds
+
+Image: apollonian_gasket.ascii.pgm
+Pixels: 360000; Number of threads: 1
+Ratio: 360000.000000
+Method: numbers
+Thread number 1: 10821 microseconds
+Real time used by main thread: 11518 microseconds
+
+Image: apollonian_gasket.ascii.pgm
+Pixels: 360000; Number of threads: 2
+Ratio: 180000.000000
+Method: block
+Thread number 1: 1389 microseconds
+Thread number 2: 1549 microseconds
+Real time used by main thread: 1837 microseconds
+
+Image: apollonian_gasket.ascii.pgm
+Pixels: 360000; Number of threads: 2
+Ratio: 180000.000000
+Method: numbers
+Thread number 1: 3121 microseconds
+Thread number 2: 11304 microseconds
+Real time used by main thread: 12013 microseconds
+
+Image: apollonian_gasket.ascii.pgm
+Pixels: 360000; Number of threads: 4
+Ratio: 90000.000000
+Method: block
+Thread number 1: 837 microseconds
+Thread number 2: 818 microseconds
+Thread number 3: 832 microseconds
+Thread number 4: 375 microseconds
+Real time used by main thread: 1019 microseconds
+
+Image: apollonian_gasket.ascii.pgm
+Pixels: 360000; Number of threads: 4
+Ratio: 90000.000000
+Method: numbers
+Thread number 1: 3444 microseconds
+Thread number 2: 2806 microseconds
+Thread number 3: 3694 microseconds
+Thread number 4: 11862 microseconds
+Real time used by main thread: 12637 microseconds
+
+Image: apollonian_gasket.ascii.pgm
+Pixels: 360000; Number of threads: 8
+Ratio: 45000.000000
+Method: block
+Thread number 1: 662 microseconds
+Thread number 2: 743 microseconds
+Thread number 3: 429 microseconds
+Thread number 4: 460 microseconds
+Thread number 5: 459 microseconds
+Thread number 6: 200 microseconds
+Thread number 7: 703 microseconds
+Thread number 8: 663 microseconds
+Real time used by main thread: 1010 microseconds
+
+Image: apollonian_gasket.ascii.pgm
+Pixels: 360000; Number of threads: 8
+Ratio: 45000.000000
+Method: numbers
+Thread number 1: 5512 microseconds
+Thread number 2: 5099 microseconds
+Thread number 3: 2885 microseconds
+Thread number 4: 3283 microseconds
+Thread number 5: 1357 microseconds
+Thread number 6: 5691 microseconds
+Thread number 7: 4069 microseconds
+Thread number 8: 10121 microseconds
+Real time used by main thread: 10951 microseconds
+
+Image: apollonian_gasket.ascii.pgm
+Pixels: 360000; Number of threads: 16
+Ratio: 22500.000000
+Method: block
+Thread number 1: 328 microseconds
+Thread number 2: 456 microseconds
+Thread number 3: 367 microseconds
+Thread number 4: 412 microseconds
+Thread number 5: 352 microseconds
+Thread number 6: 164 microseconds
+Thread number 7: 373 microseconds
+Thread number 8: 471 microseconds
+Thread number 9: 423 microseconds
+Thread number 10: 451 microseconds
+Thread number 11: 413 microseconds
+Thread number 12: 414 microseconds
+Thread number 13: 317 microseconds
+Thread number 14: 296 microseconds
+Thread number 15: 297 microseconds
+Thread number 16: 253 microseconds
+Real time used by main thread: 1256 microseconds
+
+Image: apollonian_gasket.ascii.pgm
+Pixels: 360000; Number of threads: 16
+Ratio: 22500.000000
+Method: numbers
+Thread number 1: 4943 microseconds
+Thread number 2: 5292 microseconds
+Thread number 3: 5622 microseconds
+Thread number 4: 5390 microseconds
+Thread number 5: 6188 microseconds
+Thread number 6: 2088 microseconds
+Thread number 7: 5969 microseconds
+Thread number 8: 5483 microseconds
+Thread number 9: 5419 microseconds
+Thread number 10: 5674 microseconds
+Thread number 11: 5790 microseconds
+Thread number 12: 2212 microseconds
+Thread number 13: 2238 microseconds
+Thread number 14: 2299 microseconds
+Thread number 15: 2320 microseconds
+Thread number 16: 8142 microseconds
+Real time used by main thread: 14496 microseconds
+
+Image: mona_lisa.ascii.pgm
+Pixels: 90000; Number of threads: 1
+Ratio: 90000.000000
+Method: block
+Thread number 1: 721 microseconds
+Real time used by main thread: 1166 microseconds
+
+Image: mona_lisa.ascii.pgm
+Pixels: 90000; Number of threads: 1
+Ratio: 90000.000000
+Method: numbers
+Thread number 1: 1272 microseconds
+Real time used by main thread: 1586 microseconds
+
+Image: mona_lisa.ascii.pgm
+Pixels: 90000; Number of threads: 2
+Ratio: 45000.000000
+Method: block
+Thread number 1: 169 microseconds
+Thread number 2: 348 microseconds
+Real time used by main thread: 520 microseconds
+
+Image: mona_lisa.ascii.pgm
+Pixels: 90000; Number of threads: 2
+Ratio: 45000.000000
+Method: numbers
+Thread number 1: 2654 microseconds
+Thread number 2: 777 microseconds
+Real time used by main thread: 2885 microseconds
+
+Image: mona_lisa.ascii.pgm
+Pixels: 90000; Number of threads: 4
+Ratio: 22500.000000
+Method: block
+Thread number 1: 130 microseconds
+Thread number 2: 207 microseconds
+Thread number 3: 217 microseconds
+Thread number 4: 214 microseconds
+Real time used by main thread: 471 microseconds
+
+Image: mona_lisa.ascii.pgm
+Pixels: 90000; Number of threads: 4
+Ratio: 22500.000000
+Method: numbers
+Thread number 1: 2270 microseconds
+Thread number 2: 1071 microseconds
+Thread number 3: 416 microseconds
+Thread number 4: 581 microseconds
+Real time used by main thread: 2573 microseconds
+
+Image: mona_lisa.ascii.pgm
+Pixels: 90000; Number of threads: 8
+Ratio: 11250.000000
+Method: block
+Thread number 1: 71 microseconds
+Thread number 2: 73 microseconds
+Thread number 3: 81 microseconds
+Thread number 4: 106 microseconds
+Thread number 5: 75 microseconds
+Thread number 6: 67 microseconds
+Thread number 7: 64 microseconds
+Thread number 8: 65 microseconds
+Real time used by main thread: 619 microseconds
+
+Image: mona_lisa.ascii.pgm
+Pixels: 90000; Number of threads: 8
+Ratio: 11250.000000
+Method: numbers
+Thread number 1: 1513 microseconds
+Thread number 2: 1473 microseconds
+Thread number 3: 785 microseconds
+Thread number 4: 874 microseconds
+Thread number 5: 740 microseconds
+Thread number 6: 285 microseconds
+Thread number 7: 324 microseconds
+Thread number 8: 779 microseconds
+Real time used by main thread: 2052 microseconds
+
+Image: mona_lisa.ascii.pgm
+Pixels: 90000; Number of threads: 16
+Ratio: 5625.000000
+Method: block
+Thread number 1: 73 microseconds
+Thread number 2: 78 microseconds
+Thread number 3: 61 microseconds
+Thread number 4: 55 microseconds
+Thread number 5: 57 microseconds
+Thread number 6: 53 microseconds
+Thread number 7: 83 microseconds
+Thread number 8: 69 microseconds
+Thread number 9: 47 microseconds
+Thread number 10: 71 microseconds
+Thread number 11: 60 microseconds
+Thread number 12: 76 microseconds
+Thread number 13: 43 microseconds
+Thread number 14: 68 microseconds
+Thread number 15: 64 microseconds
+Thread number 16: 66 microseconds
+Real time used by main thread: 879 microseconds
+
+Image: mona_lisa.ascii.pgm
+Pixels: 90000; Number of threads: 16
+Ratio: 5625.000000
+Method: numbers
+Thread number 1: 1836 microseconds
+Thread number 2: 1837 microseconds
+Thread number 3: 467 microseconds
+Thread number 4: 1177 microseconds
+Thread number 5: 902 microseconds
+Thread number 6: 919 microseconds
+Thread number 7: 415 microseconds
+Thread number 8: 1011 microseconds
+Thread number 9: 949 microseconds
+Thread number 10: 814 microseconds
+Thread number 11: 324 microseconds
+Thread number 12: 330 microseconds
+Thread number 13: 818 microseconds
+Thread number 14: 533 microseconds
+Thread number 15: 816 microseconds
+Thread number 16: 623 microseconds
+Real time used by main thread: 3034 microseconds
+
